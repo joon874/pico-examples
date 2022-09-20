@@ -10,3 +10,7 @@ pico_add_extra_outputs(mpu6050_i2c)
 
 # add url via pico_set_program_url
 example_auto_set_url(mpu6050_i2c)
+
+# Enable usb output, disable uart output
+pico_enable_stdio_usb(mpu6050_i2c 1)
+pico_enable_stdio_uart(mpu6050_i2c 0)
