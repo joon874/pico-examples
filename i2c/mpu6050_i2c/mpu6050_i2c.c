@@ -100,7 +100,7 @@ int main() {
 
     while (1) {
         mpu6050_read_raw(acceleration, gyro, &temp);
-
+#if 0
         // These are the raw numbers from the chip, so will need tweaking to be really useful.
         // See the datasheet for more information
         printf("Acc. X = %d, Y = %d, Z = %d\n", acceleration[0], acceleration[1], acceleration[2]);
@@ -108,7 +108,10 @@ int main() {
         // Temperature is simple so use the datasheet calculation to get deg C.
         // Note this is chip temperature.
         printf("Temp. = %f\n", (temp / 340.0) + 36.53);
-
+#else
+        // Change the raw data format without data tag
+        printf("%d, %d, %d\n", acceleration[0], acceleration[1], acceleration[2]);
+#endif
         sleep_ms(100);
     }
 
